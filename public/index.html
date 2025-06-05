@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Conversas - Atendentes</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <i class="fas fa-comments"></i>
+                <h1>Sistema de Conversas</h1>
+                <div class="header-stats" id="headerStats"></div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar - Lista de Atendentes -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h2><i class="fas fa-users"></i> Atendentes</h2>
+                    <button class="refresh-btn" onclick="carregarAtendentes()">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchAtendentes" placeholder="Buscar atendente...">
+                </div>
+                <div class="atendentes-list" id="atendentesList">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <span>Carregando atendentes...</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Content Area -->
+            <main class="content-area">
+                <!-- Tela Inicial -->
+                <div class="welcome-screen" id="welcomeScreen">
+                    <div class="welcome-content">
+                        <i class="fas fa-comments-dollar"></i>
+                        <h2>Bem-vindo ao Sistema de Conversas</h2>
+                        <p>Selecione um atendente na lista ao lado para visualizar suas conversas</p>
+                        <div class="welcome-stats">
+                            <div class="stat-card">
+                                <i class="fas fa-user-tie"></i>
+                                <div>
+                                    <span class="stat-number" id="totalAtendentes">-</span>
+                                    <span class="stat-label">Atendentes</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-comments"></i>
+                                <div>
+                                    <span class="stat-number" id="totalConversas">-</span>
+                                    <span class="stat-label">Conversas Ativas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lista de Contatos -->
+                <div class="contacts-screen hidden" id="contactsScreen">
+                    <div class="screen-header">
+                        <button class="back-btn" onclick="voltarParaInicio()">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <div class="atendente-info">
+                            <h2 id="atendenteNome">Atendente</h2>
+                            <span id="atendenteNumero">+55 11 99999-9999</span>
+                        </div>
+                        <div class="screen-actions">
+                            <button class="refresh-btn" onclick="carregarContatos()">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchContatos" placeholder="Buscar contato...">
+                    </div>
+
+                    <div class="contacts-list" id="contactsList">
+                        <div class="loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <span>Carregando contatos...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tela de Chat -->
+                <div class="chat-screen hidden" id="chatScreen">
+                    <div class="chat-header">
+                        <button class="back-btn" onclick="voltarParaContatos()">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <div class="contact-info">
+                            <div class="contact-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3 id="contactName">Contato</h3>
+                                <span id="contactNumber">+55 11 88888-8888</span>
+                            </div>
+                        </div>
+                        <div class="chat-actions">
+                            <button class="action-btn" onclick="carregarMensagens()">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <span>Carregando mensagens...</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,477 @@
+/* Reset e Variáveis */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --whatsapp-green: #25D366;
+    --whatsapp-green-dark: #128C7E;
+    --whatsapp-teal: #075E54;
+    --whatsapp-light-green: #DCF8C6;
+    --background-color: #f0f2f5;
+    --sidebar-bg: #ffffff;
+    --chat-bg: #e5ddd5;
+    --text-primary: #3b4a54;
+    --text-secondary: #667781;
+    --border-color: #e9edef;
+    --shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+/* Layout Principal */
+.app-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: linear-gradient(135deg, var(--whatsapp-teal), var(--whatsapp-green-dark));
+    color: white;
+    padding: 1rem 2rem;
+    box-shadow: var(--shadow);
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header-content i {
+    font-size: 1.5rem;
+}
+
+.header-content h1 {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.header-stats {
+    margin-left: auto;
+    display: flex;
+    gap: 2rem;
+    font-size: 0.9rem;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 350px;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 1.5rem 1rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-header h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.search-box {
+    padding: 1rem;
+    position: relative;
+}
+
+.search-box i {
+    position: absolute;
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    background: #f0f2f5;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.search-box input:focus {
+    border-color: var(--whatsapp-green);
+    background: white;
+}
+
+.atendentes-list, .contacts-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Cards de Atendente/Contato */
+.atendente-card, .contact-card {
+    padding: 1rem;
+    border-bottom: 1px solid #f0f2f5;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.atendente-card:hover, .contact-card:hover {
+    background-color: #f5f6f6;
+}
+
+.atendente-card.active {
+    background-color: var(--whatsapp-light-green);
+    border-right: 3px solid var(--whatsapp-green);
+}
+
+.atendente-avatar, .contact-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--whatsapp-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.atendente-info, .contact-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.atendente-name, .contact-name {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.atendente-number, .contact-number {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.atendente-stats {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 1rem;
+}
+
+.last-message {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.last-message-time {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+/* Área de Conteúdo */
+.content-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--sidebar-bg);
+}
+
+.welcome-screen {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #f0f2f5, #e5ddd5);
+}
+
+.welcome-content {
+    max-width: 500px;
+    padding: 2rem;
+}
+
+.welcome-content i {
+    font-size: 4rem;
+    color: var(--whatsapp-green);
+    margin-bottom: 1rem;
+}
+
+.welcome-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.welcome-content p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.welcome-stats {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.stat-card i {
+    font-size: 2rem !important;
+    color: var(--whatsapp-green);
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Telas de Contatos e Chat */
+.contacts-screen, .chat-screen {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.screen-header, .chat-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    background: white;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.back-btn, .refresh-btn, .action-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.back-btn:hover, .refresh-btn:hover, .action-btn:hover {
+    background: #f0f2f5;
+    color: var(--whatsapp-green);
+}
+
+.atendente-info h2, .contact-details h3 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.atendente-info span, .contact-details span {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.screen-actions, .chat-actions {
+    margin-left: auto;
+}
+
+/* Chat Messages */
+.chat-messages {
+    flex: 1;
+    padding: 1rem;
+    background: var(--chat-bg);
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><rect width="40" height="40" fill="%23e5ddd5"/><circle cx="20" cy="20" r="1" fill="%23d1c7ac" opacity="0.3"/></svg>');
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.message {
+    max-width: 70%;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.message-sent {
+    align-self: flex-end;
+    background: var(--whatsapp-light-green);
+    border-bottom-right-radius: 3px;
+}
+
+.message-received {
+    align-self: flex-start;
+    background: white;
+    border-bottom-left-radius: 3px;
+}
+
+.message-content {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 0.25rem;
+}
+
+.message-time {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.25rem;
+}
+
+.message-sent .message-time {
+    color: #4a5568;
+}
+
+/* Estados de Loading */
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+    color: var(--text-secondary);
+}
+
+.loading i {
+    font-size: 1.2rem;
+}
+
+/* Toast Notifications */
+.toast-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+}
+
+.toast {
+    background: var(--whatsapp-green);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    box-shadow: var(--shadow);
+    animation: slideIn 0.3s ease-out;
+}
+
+.toast.error {
+    background: #e53e3e;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Utilities */
+.hidden {
+    display: none !important;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        max-height: 40vh;
+    }
+    
+    .welcome-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .stat-card {
+        justify-content: center;
+    }
+    
+    .header-content {
+        padding: 0 1rem;
+    }
+    
+    .header-stats {
+        display: none;
+    }
+}
+
+/* Scrollbar customizada */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
